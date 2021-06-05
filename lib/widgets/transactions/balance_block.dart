@@ -15,10 +15,13 @@ class BalanceBlock extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Icon(
-            Icons.notifications,
-            color: Colors.white,
-            size: 25,
+          IconButton(
+            icon: Icon(
+              Icons.arrow_back,
+              color: Colors.white,
+            ),
+            onPressed: () => Navigator.pop(context),
+            padding: EdgeInsets.only(right: 50),
           ),
           SizedBox(height: 25),
           Container(
