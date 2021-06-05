@@ -26,8 +26,9 @@ class _PaymentsScreenState extends State<PaymentsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        child: Padding(
+    return Scaffold(
+        body: SafeArea(
+            child: Padding(
       padding: EdgeInsets.only(right: 20, left: 20),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -74,7 +75,7 @@ class _PaymentsScreenState extends State<PaymentsScreen> {
           ),
         ],
       ),
-    ));
+    )));
   }
 
   void addTransation(Transaction transaction) {

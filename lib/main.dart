@@ -26,16 +26,13 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Payments Micro App',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: Scaffold(
-          body: SafeArea(
-              child: PaymentsScreen(
-        store: store,
-      ))),
-    );
+        debugShowCheckedModeBanner: false,
+        title: 'Payments Micro App',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: PaymentsScreen(
+          store: store,
+        ));
   }
 }
