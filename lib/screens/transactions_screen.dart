@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:payments/widgets/transactions/balance_block.dart';
+import 'package:payments/widgets/transactions/transaction_list.dart';
 
 class TransactionsScreen extends StatelessWidget {
   @override
@@ -15,6 +16,7 @@ class TransactionsScreen extends StatelessWidget {
                     name: 'Darkhan',
                     balance: '24,980.00',
                   ),
+                  TransactionList(),
                 ],
               ),
             ),
