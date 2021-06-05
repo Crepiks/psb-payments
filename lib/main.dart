@@ -11,16 +11,8 @@ class App extends StatelessWidget {
 
   App() {
     store.registerEvent('TRANSACTION_ADD');
-    store.registerEvent('NAVIGATE_HOME');
+    store.registerEvent('NAVIGATE_POP');
     store.registerEvent('NAVIGATE_PROFILE');
-
-    store.addEventListener('NAVIGATE_HOME', () {
-      print("Navigating to Home");
-    });
-
-    store.addEventListener('NAVIGATE_PROFILE', () {
-      print("Navigating to Profile");
-    });
   }
 
   @override

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import "package:micro_mobile/micro_mobile.dart";
-import "./models/transaction_model.dart";
+import "package:main/models/transaction_model.dart";
 import "./widgets/transaction_card.dart";
 
 class PaymentsScreen extends StatefulWidget {
@@ -38,7 +38,7 @@ class _PaymentsScreenState extends State<PaymentsScreen> {
             children: [
               IconButton(
                   onPressed: () {
-                    widget.store.emit('NAVIGATE_HOME');
+                    widget.store.emit('NAVIGATE_POP');
                   },
                   icon: Icon(Icons.arrow_back)),
               Container(
