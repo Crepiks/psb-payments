@@ -1,22 +1,29 @@
 import 'package:flutter/material.dart';
+import "package:micro_mobile/micro_mobile.dart";
 import 'package:payments/app.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(App());
 }
 
-class MyApp extends StatelessWidget {
+class App extends StatelessWidget {
+  final Store store = Store();
+
+  App() {
+    store.registerEvent('TRANSACTION_ADD');
+    store.registerEvent('NAVIGATE_PROFILE');
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Flutter Demo',
+        debugShowCheckedModeBanner: false,
+        title: 'Payments Micro App',
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: Scaffold(
-            appBar: AppBar(
-              title: Text("Payments Page"),
-            ),
-            body: PaymentsScreen()));
+        home: PaymentsScreen(
+          store: store,
+        ));
   }
 }
