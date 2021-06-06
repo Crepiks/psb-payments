@@ -38,7 +38,7 @@ class _PaymentsScreenState extends State<PaymentsScreen> {
             children: [
               IconButton(
                   onPressed: () {
-                    widget.store.emit('NAVIGATE_POP');
+                    Navigator.pop(context);
                   },
                   icon: Icon(Icons.arrow_back)),
               Container(
@@ -51,7 +51,7 @@ class _PaymentsScreenState extends State<PaymentsScreen> {
               ),
               IconButton(
                   onPressed: () {
-                    widget.store.emit('NAVIGATE_PROFILE');
+                    widget.store.emit('NAVIGATE_PROFILE', context);
                   },
                   icon: Icon(Icons.person))
             ],
@@ -76,6 +76,53 @@ class _PaymentsScreenState extends State<PaymentsScreen> {
         ],
       ),
     )));
+  }
+
+  void addTransation(Transaction transaction) {
+    setState(() {
+      transactions.add(transaction);
+    });
+  }
+}
+
+class LatestTransactions extends StatefulWidget {
+  final Store store;
+
+  LatestTransactions({Key? key, required this.store}) : super(key: key);
+
+  @override
+  _LatestTransactionsState createState() => _LatestTransactionsState();
+}
+
+class _LatestTransactionsState extends State<LatestTransactions> {
+  final transactions = <Transaction>[
+    Transaction(name: "Default", date: "06.05.2021", value: "+250 USA")
+  ];
+
+  @override
+  void initState() {
+    super.initState();
+
+    widget.store.addEventListener("TRANSACTION_ADD", (Transaction payload) {
+      addTransation(payload);
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+        itemCount: transactions.length,
+        itemBuilder: (context, index) {
+          var transaction = transactions[index];
+
+          return Padding(
+            padding: EdgeInsets.only(top: 10, bottom: 10),
+            child: TransactionCard(
+                name: transaction.name,
+                date: transaction.date,
+                value: transaction.value),
+          );
+        });
   }
 
   void addTransation(Transaction transaction) {
